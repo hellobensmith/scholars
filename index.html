@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SCHOLARSHIP</title>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.3/cdn.min.js"
+            defer
+        ></script>
+        <style>
+            body {
+                font-family:
+                    Helvetica Neue,
+                    sans-serif;
+                line-height: 1.6;
+                color: #333;
+                background-color: #f0f0f0;
+                margin: 0;
+                padding: 20px;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .scholar-card {
+                background-color: #fff;
+                border: 2px solid whitesmoke;
+                border-radius: 8px;
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            .scholar-name {
+                font-size: 18px;
+                font-weight: bold;
+                margin: 0 0 5px 0;
+            }
+            .scholar-role {
+                font-size: 14px;
+                color: #666;
+                margin: 0 0 10px 0;
+            }
+            .scholar-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .scholar-link {
+                background-color: whitesmoke;
+                color: #a5a5a5;
+                text-decoration: none;
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-size: 14px;
+                transition: background-color 0.2s;
+            }
+            .scholar-link:hover {
+                background-color: coral;
+                color: white;
+            }
+            .note {
+                text-align: center;
+                font-style: italic;
+                margin-top: 20px;
+                font-size: 14px;
+                color: #666;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container" x-data="scholarData()">
+            <h1>LIKE AND SUBSCRIBE</h1>
+            <p class="note">
+                I'm compiling a list of scholars, authors, and theologians that
+                have helped me understand the Bible and Theology and everything
+                in between. I hope you find it useful. ❤️ - B
+            </p>
+            <p class="note">
+                P.S. my desert island resource would be
+                <a
+                    href="https://bibleproject.com/explore/how-to-read-the-bible/"
+                    >BibleProject</a
+                >
+                🏝️
+            </p>
+            <template x-for="scholar in scholars" :key="scholar.name">
+                <div class="scholar-card">
+                    <h2 class="scholar-name" x-text="scholar.name"></h2>
+                    <p class="scholar-role" x-text="scholar.role"></p>
+                    <div
+                        class="scholar-links"
+                        x-show="scholar.links && scholar.links.length"
+                    >
+                        <template
+                            x-for="link in scholar.links"
+                            :key="link.name"
+                        >
+                            <a
+                                :href="link.url"
+                                class="scholar-link"
+                                x-text="link.name"
+                            ></a>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <script>
+            function scholarData() {
+                return {
+                    scholars: [
+                        {
+                            name: "Jeannine K. Brown",
+                            role: "Professor, Biblical Scholar",
+                            links: [
+                                {
+                                    name: "Blog",
+                                    url: "https://jeanninekbrown.wordpress.com/",
+                                },
+                                { name: "Books", url: "#" },
+                            ],
+                        },
+                        {
+                            name: "Richard Bauckham",
+                            role: "Bible Scholar and Theologian",
+                            links: [
+                                {
+                                    name: "Website",
+                                    url: "https://richardbauckham.co.uk/",
+                                },
+                                {
+                                    name: "Books",
+                                    url: "https://richardbauckham.co.uk/books-sole-author/",
+                                },
+                            ],
+                        },
+                        {
+                            name: "Fleming Rutledge",
+                            role: "Theologian",
+                            links: [
+                                {
+                                    name: "Twitter",
+                                    url: "https://twitter.com/flemingrut/",
+                                },
+                                {
+                                    name: "Blog",
+                                    url: "https://generousorthodoxy.org/",
+                                },
+                                {
+                                    name: "Books",
+                                    url: "https://generousorthodoxy.org/books/",
+                                },
+                            ],
+                        },
+                        {
+                            name: "Richard B. Hays",
+                            role: "Professor and Biblical Scholar",
+                            links: [
+                                {
+                                    name: "Duke Scholars Page",
+                                    url: "https://scholars.duke.edu/person/rhays",
+                                },
+                                {
+                                    name: "Books",
+                                    url: "https://bookshop.org/contributors/richard-b-hays",
+                                },
+                            ],
+                        },
+                        {
+                            name: "Joel S. Baden",
+                            role: "Professor of Hebrew Bible",
+                            links: [
+                                {
+                                    name: "Twitter",
+                                    url: "https://twitter.com/joelbaden",
+                                },
+                                {
+                                    name: "Yale Faculty Page",
+                                    url: "https://divinity.yale.edu/faculty-and-research/yds-faculty/joel-s-baden",
+                                },
+                                {
+                                    name: "Books",
+                                    url: "https://bookshop.org/contributors/joel-s-baden",
+                                },
+                            ],
+                        },
+                        {
+                            name: "Jon D. Levenson",
+                            role: "Hebrew Bible Scholar",
+                            links: [
+                                {
+                                    name: "Harvard Faculty Page",
+                                    url: "https://hds.harvard.edu/people/jon-d-levenson",
+                                },
+                                {
+                                    name: "Books",
+                                    url: "https://bookshop.org/contributors/jon-d-levenson",
+                                },
+                            ],
+                        },
+                        {
+                            name: "Oliver D. Crisp",
+                            role: "Theologian",
+                            links: [
+                                {
+                                    name: "University Page",
+                                    url: "https://www.st-andrews.ac.uk/divinity/people/odc",
+                                },
+                                {
+                                    name: "Books",
+                                    url: "https://www.amazon.com/s?i=stripbooks&rh=p_27%3AOliver+D.+Crisp&s=relevancerank&text=Oliver+D.+Crisp&ref=dp_byline_sr_book_1",
+                                },
+                            ],
+                        },
+                        {
+                            name: "Matthew Bates",
+                            role: "Professor and Author",
+                            links: [
+                                {
+                                    name: "Website",
+                                    url: "https://matthewwbates.com/",
+                                },
+                                {
+                                    name: "Books",
+                                    url: "https://matthewwbates.com/index.php#books",
+                                },
+                                { name: "Podcasts", url: "#" },
+                            ],
+                        },
+                        {
+                            name: "Larry Hurtado",
+                            role: "New Testament Scholar",
+                            links: [
+                                {
+                                    name: "Blog",
+                                    url: "https://larryhurtado.wordpress.com/",
+                                },
+                                {
+                                    name: "Books",
+                                    url: "https://www.amazon.com/Larry-W-Hurtado/e/B001HOLKN4?ref=sr_ntt_srch_lnk_2&qid=1659403818&sr=8-2",
+                                },
+                            ],
+                        },
+                        { name: "George Eldon Ladd", role: "Biblical Scholar" },
+                        {
+                            name: "Michael F Bird",
+                            role: "Theologian and New Testament Scholar",
+                        },
+                        {
+                            name: "Mark Sayers",
+                            role: "Author and Cultural Commentator",
+                        },
+                        {
+                            name: "Matthew Novenson",
+                            role: "New Testament Scholar",
+                        },
+                        {
+                            name: "Bruce Logenecker",
+                            role: "New Testament Scholar",
+                        },
+                        {
+                            name: "J. Richard Middleton",
+                            role: "Biblical Scholar and Theologian",
+                        },
+                        {
+                            name: "N.T. Wright",
+                            role: "New Testament Scholar and Theologian",
+                        },
+                        {
+                            name: "James D. G. Dunn",
+                            role: "New Testament Scholar",
+                        },
+                        {
+                            name: "Dale C. Allison",
+                            role: "New Testament Scholar",
+                        },
+                        { name: "Nijay Gupta", role: "New Testament Scholar" },
+                        {
+                            name: "Benjamin Gladd",
+                            role: "New Testament Scholar",
+                        },
+                        { name: "David Campbell", role: "Theologian" },
+                        {
+                            name: "Walter Brueggeman",
+                            role: "Old Testament Scholar",
+                        },
+                        {
+                            name: "Stanley Hauerwas",
+                            role: "Theologian and Ethicist",
+                        },
+                        {
+                            name: "David Fitch",
+                            role: "Theologian and Missiologist",
+                        },
+                        {
+                            name: "Geoff Holsclaw",
+                            role: "Theologian and Pastor",
+                        },
+                    ],
+                };
+            }
+        </script>
+    </body>
+</html>
